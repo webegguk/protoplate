@@ -47,9 +47,10 @@
                     <p>Work has been done on getting <strong><a href="http://sass-lang.com/libsass">Libsass</a></strong> into the current workflow and we could try to start using it.</p>
                     <p>By far the largest <strong>Benefit</strong> to using Libsass is speed. Whenever a sass file is saved, the whole projects worth of sass files is compiled. Large projects like HFD have a huge library of sass files to work through during that process. Machine speed will have an effect and with the native Ruby Sass/compass in use, compilation time ranges from around 20-40 seconds. With this happening every time the sass is edited and refreshed in the browser, it is a huge amount of time overhead. Depending on any particular developers method/habits this could be half an hour a day. Spread that over an entire project lifecycle and it puts things into context.</p>
                     <p>Research and setup carried out shows that by removing Singularity and its interdependancy on compass (which is incompatible with Libsass) cuts this compilation time right back to almost instantaneous.</p>
-                    <p>As an example, the setup of this project, although relatively small and not using compass (which has a lot of things to import just by itself) still takes around 6 seconds to compile. Switch to libsass and this is cut to around 9 milliseconds (0.009 seconds).</p>
+                    <p>As an example, the setup of this project, although relatively small and not using compass (which has a lot of things to import just by itself) still takes around 6 seconds to compile. Switch to libsass and this is cut to around 9 milliseconds (0.009 seconds). The effect this has on Workflow isn't just physical but phycological, having virtually no delay to see your changes makes things (including your brain) run a lot more smoothly.</p>
                     <p>Another <strong>benefit</strong> is that it takes away the need to add configuration for singularity/breakpoint and other tools in more than one place (config.rb is no longer needed).</p>
                     <p><strong>Concerns</strong> over it's use could be that it is still relatively early days for Libsass. This means that finding alternatives to widely used supporting tools like compass could currently be difficult (though not impossible).</p>
+                    <p>After researching workarounds and also reading <a href="http://benfrain.com/libsass-lightning-fast-sass-compiler-ready-prime-time/">articles like this</a> It is my strong belief that finding a good alternative solution to things that compass currently fills will mean that going forward with libsass will get easier as it seems inevitable that libsass will take over as the compiler of choice.</p>
                 </div>
             </li>
             <li>
@@ -115,6 +116,28 @@
                 </div>
                 <div class="col-2">
                     <p>It is important when the menu stick to the top of the page, that it is as small in height as possible so as to avoid the 'letterbox' effect on the rest of the page. Users shouldn't be restricted to a small section of their browser or it can be frustrating.</p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+    <div class="content">
+
+        <h2>General Considerations</h2>
+
+    </div>
+
+    <div class="content">
+
+        <ul class="points">
+            <li>
+                <div class="col-1">
+                    <h3>Inter-sites design and css</h3>
+                </div>
+                <div class="col-2">
+                    <p>In order to keep all sites front end design modular and streamilined in terms of sass libraries used, elements should be strictly controlled and it should be appreciated by all parties that ANY changes to ANY elements can potentially affect other areas and/or sites in the projects range. These changes should not be made without some kind of process which has the design of the sites at the forefront.</p>
+                    <p>Sass files should be written in such a way as to be able to have a new library imported over the top so that a new site can be 'skinned'. Structure will be very important here.</p>
                 </div>
             </li>
         </ul>
