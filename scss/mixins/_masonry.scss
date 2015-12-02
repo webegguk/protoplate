@@ -1,0 +1,97 @@
+// Masonry grids
+//
+
+// Calculate column width based on desired columns and a specified gutter
+// Uses block-grid based function
+@function masonry-column-width($numCols, $gutterSize, $usingOuterGutters: false) {
+  @return block-grid-column-width($numCols, $gutterSize, $usingOuterGutters);
+}
+
+// Calculates the height for a taller item
+@function masonry-tall-height($index) {
+  @return nth($masonry-tall-scale, $index);
+}
+
+// Calculate the height for shorter items
+@function masonry-short-height($index) {
+  @return nth($masonry-short-scale, $index);
+}
+
+// Calculate the tall and short differential at a given
+// size pair
+@function masonry-height-diff($index) {
+  @return masonry-tall-height($index) - masonry-short-height($index);
+}
+
+
+// Sets short and tall heights for items appearing in a masonry
+// grid that is currently 3 columns wide
+// Also provides a means for setting the image scaling preference
+@mixin masonry-grid3-item($scaleIndex, $imageSizeHeightBias: false ) {
+
+  $short-height: masonry-short-height($scaleIndex);
+  $tall-height: masonry-tall-height($scaleIndex);
+
+  // Short item
+  &:nth-of-type(odd) {
+    height: $short-height;
+  }
+
+  // Tall item
+  &:nth-of-type(even) {
+    top: $short-height - $tall-height;
+    height: $tall-height;
+
+    @if ($imageSizeHeightBias) {
+      // Switch image resizing to prioritise height and not width
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+
+  // Always ensure 2nd item is rooted to the top
+  &:nth-of-type(2) {
+    top: 0;
+  }
+}
+
+// Sets short and tall heights for items appearing in a masonry
+// grid that is currently 2 columns wide
+// Also provides a means for setting the image scaling preference
+//@mixin masonry-grid2-item($scaleIndex, $imageSizeHeightBias: false ) {
+//
+//  $short-height: masonry-short-height($scaleIndex);
+//  $tall-height: masonry-tall-height($scaleIndex);
+//
+//  // Short item
+//  &:nth-of-type(4n+4),
+//  &:nth-of-type(4n+1) {
+//    height: $short-height;
+//  }
+//  &:nth-of-type(4n+1) {
+//    top: $short-height - $tall-height;
+//  }
+//
+//  // Tall item
+//  &:nth-of-type(4n+2),
+//  &:nth-of-type(4n+3) {
+//    top: $short-height - $tall-height;
+//    height: $tall-height;
+//
+//    @if ($imageSizeHeightBias) {
+//      // Switch image resizing to prioritise height and not width
+//      img {
+//        width: auto;
+//        height: 100%;
+//      }
+//    }
+//  }
+//
+//  // Always ensure 1st and 2nd items are rooted to the top
+//  &:nth-of-type(1),
+//  &:nth-of-type(2) {
+//    top: 0;
+//  }
+//}

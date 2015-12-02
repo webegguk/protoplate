@@ -1,0 +1,20 @@
+
+.points {
+  @include clearfix;
+}
+.points li {
+  display:block;
+  height:auto;
+  margin-bottom: 10px;
+  @include clearfix;
+  .col-1, .col-2 {
+    @include breakpoint($small-up){
+      @include span(3 of 8);
+    }
+  }
+  .col-2 {
+    @include breakpoint($small-up){
+      @include span(5 of 8 last);
+    }
+  }
+}

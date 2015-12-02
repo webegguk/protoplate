@@ -1,0 +1,37 @@
+.container {
+  @include container;
+  //@include span(9 of 12);
+  @include breakpoint($medium-up) {
+    @include span(8 of 12);
+    // adding a bleed to the gutter value supplied means that the inner element will be pulled out to the edge.
+    @include bleed(gutter(12));
+    // because we bleed the edge of the element, we don't need to add any gutter values onto it.
+    margin-left: span(2 of 12);
+  }
+}
+
+.content {
+  display: block;
+  padding:10px;
+  @include clearfix;
+}
+
+.nested-item {
+  @include breakpoint($medium-up) {
+    @include span(4 of 8);
+    margin-left: span(2 of 8) + gutter(8);
+  }
+}
+
+.gallery li {
+  display: block;
+  min-height: 100px;
+  margin-bottom: 10px;
+  @include breakpoint($medium-up) {
+    @include gallery(3 of 9);
+    margin-bottom: gutter(8);
+  }
+  @include breakpoint($large-up, $no-query: true) {
+    @include gallery(2 of 8);
+  }
+}

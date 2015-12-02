@@ -1,0 +1,28 @@
+// Media Listing layouts
+
+// Landscape layout
+@mixin layout-landscape {
+
+  .col-media {
+    @include grid-span(3, 1, $gutter: 20px);
+    //line-height: 0;
+  }
+
+  .col-content {
+    @include grid-span(9, 4, $gutter: 20px);
+  }
+}
+
+// Portrait layout
+@mixin layout-stacked {
+
+  .col-media {
+    @include grid-span(12, 1, $gutter: 20px);
+    //line-height: 0;
+    margin-bottom: 20px;
+  }
+
+  .col-content {
+    @include grid-span(12, 1, $gutter: 20px);
+  }
+}

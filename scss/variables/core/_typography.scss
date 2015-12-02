@@ -1,0 +1,104 @@
+//** Typekit font weights
+$font-weight-light:     300;
+$font-weight-regular:   400;
+$font-weight-bold:      700;
+
+//** We use these to control text direction settings
+$text-direction: ltr;
+$default-float: left;
+$opposite-direction: right;
+@if $text-direction == ltr {
+  $default-float: left;
+  $opposite-direction: right;
+} @else {
+  $default-float: right;
+  $opposite-direction: left;
+}
+
+//** Base Font
+$base-font-color:   #666;
+$base-font-family:  "open-sans", Arial, sans-serif;
+$base-font-weight:  $font-weight-regular;
+//** This is the default html and body font-size for the base rem value.
+$base-font-size:    14;
+$base-line-height:  1.5;
+
+//** Support for Foundation rem-calc mixin
+$rem-base: 16;
+
+//** Computed "line-height" (`font-size` * `line-height`) for use with `margin`, `padding`, etc.
+$line-height-computed: floor(($base-font-size * $base-line-height)); // ~24px
+
+$secondary-font-family: arial, sans-serif;
+$icon-font-family: FontAwesome;
+
+//** Do we need to support browsers with no rem capabilities
+$support-non-rem: true;
+
+//** We use these to style paragraphs
+$paragraph-font-family: $base-font-family;
+$paragraph-font-weight: $base-font-weight;
+$paragraph-font-size: $base-font-size;
+$paragraph-line-height: $base-line-height;
+$paragraph-margin-bottom: 20px;
+$paragraph-text-rendering: optimizeLegibility;
+
+//** Ability to scale up/down size on x-small screen sizes
+$paragraph-font-reduction: 0;
+
+//** Smaller legal paragraphs
+$paragraph-legal-font-size: 16;
+
+//** We use these to control header font styles
+$header-font-family: $base-font-family;
+$header-font-weight: $font-weight-regular;
+$header-font-style: normal;
+$header-font-color: $darker-gray;
+//$header-line-height: $base-line-height;
+$header-line-height: 1.166;
+$header-top-margin: 0;
+$header-bottom-margin: 20px;
+$header-text-rendering: optimizeLegibility;
+
+//** We use these to control header font sizes
+$h1-font-size: 24;
+$h2-font-size: 22;
+$h3-font-size: 16;
+$h4-font-size: 14;
+$h5-font-size: 14;
+$h6-font-size: 14;
+
+//** We use these to control header size reduction on small screens
+//$h1-font-reduction: 14;
+$h1-font-reduction: 0;
+$h2-font-reduction: 2;
+$h3-font-reduction: 0;
+$h4-font-reduction: 0;
+$h5-font-reduction: 0;
+$h6-font-reduction: 0;
+
+//** We use these to style anchors
+$anchor-text-decoration: none;
+$anchor-text-decoration-hover: underline;
+$anchor-font-color: #0c4da2;
+$anchor-font-color-hover: #0c4da2; //scale-color($anchor-font-color, $lightness: -14%);
+$anchor-font-color-disabled: $dark-gray;
+
+//** We use these to style lists
+$list-font-family: $paragraph-font-family;
+$list-font-size: $paragraph-font-size;
+$list-line-height: $paragraph-line-height;
+$list-margin-bottom: $paragraph-margin-bottom;
+$list-style-position: outside;
+$list-side-margin: 18px; //1.125rem
+$list-ordered-side-margin: 22px; //1.375rem
+$list-side-margin-no-bullet: 0;
+$list-nested-margin: 18px;
+$list-links-margin: 0;
+$definition-list-header-weight: $font-weight-bold;
+$definition-list-header-margin-bottom: 6px; //.375rem
+$definition-list-margin-bottom: 12px;
+
+//** Content tags
+$content-tag-font-size: 22;
+$content-tag-font-size-reduction: 6;

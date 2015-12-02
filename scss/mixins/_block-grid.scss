@@ -1,0 +1,67 @@
+//
+// Column width calculator
+//
+// Determines the width of an individual column in a multi-column
+// row. A gutter size (%) can be passed.
+// Gutters are split either side of each column and automatically
+// removed (via CSS3) from the left of first column and right
+// of last column in row.
+//
+// +---------+ | +---------+ | +---------+
+// |         | | |         | | |         |
+// | column  |g|g| column  |g|g| column  |
+// |         | | |         | | |         |
+// +---------+ | +---------+ | +---------+
+//
+// $usingOuterGutters: Set to true to calculate width when split
+//                     gutters cannot be altered with CSS3 selectors,
+//                     i.e. IE8. Results in outer split gutters and
+//                     a slightly narrower column width value.
+//
+// | +--------+ | +--------+ | +--------+ |
+// | |        | | |        | | |        | |
+// |g| column |g|g| column |g|g| column |g|
+// | |        | | |        | | |        | |
+// | +--------+ | +--------+ | +--------+ |
+//
+@function block-grid-column-width($numCols, $gutterSizePercentage, $usingOuterGutters: false) {
+  @if ($usingOuterGutters) {
+    @return (100% / $numCols) - $gutterSizePercentage;
+  } @else {
+    $totalGutterWidth: ($numCols - 1) * $gutterSizePercentage;
+    @return (100% - $totalGutterWidth) / $numCols;
+  }
+}
+
+@mixin block-grid($gridSize, $gutterSizePercentage) {
+
+  > li {
+    /// Fallback for legacy browsers that don't support nth-of-type
+    width: block-grid-column-width($gridSize, $gutterSizePercentage, $usingOuterGutters: true);
+
+    // Adjust width for browsers that can fully support our split gutter
+    &:nth-of-type(n) {
+      width: block-grid-column-width($gridSize, $gutterSizePercentage);
+    }
+
+    // Split gutter
+    margin-left: $gutterSizePercentage / 2;
+    margin-right: $gutterSizePercentage/ 2;
+
+    // Remove right gutter from last column
+    &:nth-of-type(#{$gridSize}n+#{$gridSize}) {
+      margin-right: 0;
+    }
+
+    // Force grid to clear at designation column size
+    &:nth-of-type(#{$gridSize}n+1) {
+      clear: both;
+      margin-left: 0; // Remove left gutter from first item in column
+    }
+
+    // Remove border from last row of items in grid
+    &:nth-last-of-type(-n+#{$gridSize}) {
+      margin-bottom: 0;
+    }
+  }
+}

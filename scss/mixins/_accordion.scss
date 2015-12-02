@@ -1,0 +1,43 @@
+// Accordions
+
+// Icon theme generator
+// $closed-icon: font character code for icon when accordion is closed
+// $open-icon: font character code for icon when accordion is open
+@mixin accordion-icon-variant($theme-name, $closed-icon, $open-icon) {
+
+  // Icon themes for panels
+//  .panel {
+
+    // Open (default) state icon
+    .#{$theme-name} {
+      &:after {
+        content: $open-icon;
+      }
+    }
+
+    // Support for trigger element (data-toggle['collapse']) to
+    // be the same as the element with the $theme-name class.
+//    &.#{$theme-name} {
+//      &:after {
+//        content: $open-icon;
+//      }
+//    }
+
+    // Closed state icon
+    .collapsed {
+      .#{$theme-name} {
+        &:after {
+          content: $closed-icon;
+        }
+      }
+
+      // Support for trigger element (data-toggle['collapse']) to
+      // be the same as the element with the $theme-name class.
+      &.#{$theme-name} {
+        &:after {
+          content: $closed-icon;
+        }
+      }
+    }
+//  }
+}

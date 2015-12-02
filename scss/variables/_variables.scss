@@ -1,0 +1,89 @@
+
+// Media sizes
+//
+// Common screen sizes | browser sizes:
+// iPhone 4   - 320 x 480px | 480 x 212px
+// iPhone 5   - 320 x 568px | 568 x 212px
+// iPhone 6   - 375 x 667px | 667 x 267px
+// iPhone 6+  - 414 x 736px | 736 x 306px
+//
+
+//** Here we define the lower and upper bounds for each media size
+$xsmall-max:      480px;    // 30em; - iPhone landscape
+$small-min:       481px;    // 30.0625em;
+$small-max:       768px;    // 48em; - iPad portrait
+$medium-min:      769px;    // 48.0625em;
+$medium-max:      1024px;   // 64em; - iPad landscape
+$large-min:       1025px;   // 64.0625em;
+$large-max:       1300px;   // 90em;
+$xlarge-min:      1301px;   // 81.3125em;
+$xlarge-max:      1500px;   // 93.75em;
+
+//** Fixed widths
+$medium-width:    745px;
+$large-width:     1024px;
+$xlarge-width:    1200px;
+
+//** Media Queries
+$screen: "only screen";
+
+$xsmall-up: $screen;
+$xsmall-only: ($screen) (max-width $xsmall-max);
+
+$small-up: ($screen) (min-width $small-min);
+$small-only: ($screen) (min-width $small-min) (max-width $small-max);
+
+$medium-up: ($screen) (min-width $medium-min);
+$medium-only: ($screen) (min-width $medium-min) (max-width $medium-max);
+
+$large-up: ($screen) (min-width $large-min);
+$large-only: ($screen) (min-width $large-min) (max-width $large-max);
+
+$xlarge-up: ($screen) (min-width $xlarge-min);
+$xlarge-only: ($screen) (min-width $xlarge-min) (max-width $xlarge-max);
+
+//** For half page layouts such as the map search listing page.
+$small-up-half-val: $small-min+(($small-min/2));
+$small-up-half: ($screen) (min-width $small-up-half-val);
+
+$medium-up-half-val: $medium-min+(($medium-min/2));
+$medium-up-half: ($screen) (min-width $medium-up-half-val);
+
+$large-up-half-val: $large-min+(($large-min/2));
+$large-up-half: ($screen) (min-width $large-up-half-val);
+
+$xlarge-up-half-val: $xlarge-min+(($xlarge-min/2));
+$xlarge-up-half: ($screen) (min-width $xlarge-up-half-val);
+
+
+//** Target retina devices
+$img-retina: "#{$screen} and (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)";
+
+
+// Z index levels
+//$z-index-low: 1;
+//$z-index-mid: 10;
+//$z-index-high: 20;
+
+
+
+/* Changing Susy default global settings */
+$susy: (
+        /* Tells Susy to use 12 columns */
+        columns: 12,
+        /* Tells Susy that the container has a max-width of 1320px */
+        container: $xlarge-width,
+        /* Tells Susy to use border-box  */
+        global-box-sizing: border-box,
+        debug: (image: hide),
+        use-custom: (
+                /* this value requires compass but will fallback if not present */
+                rem: true
+        )
+);
+
+$total-columns  : 7;
+$column-width   : 4.25em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+

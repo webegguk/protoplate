@@ -1,0 +1,7 @@
+// Site header hero bg
+
+@mixin hero-bg-img($hero-bg-img-url, $hero-bg-img-pos, $hero-bg-img-size) {
+  background: $hero-bg-img-url;
+  background-position: $hero-bg-img-pos;
+  background-size: $hero-bg-img-size;
+}

@@ -1,0 +1,28 @@
+// Primary navigation variant (theme)
+
+@mixin primary-nav-variant($item-color, $item-bg, $item-hover-color, $item-hover-bg, $item-hover-decoration, $item-active-color) {
+  .top-level {
+    // Top level menu items
+    > a {
+      color: $item-color;
+      background: $item-bg;
+
+      &:hover {
+        text-decoration: $item-hover-decoration;
+        background: $item-hover-bg;
+        color: $item-hover-color;
+      }
+    }
+
+    &.open {
+      > a {
+        color: $item-active-color;
+        background: inherit;
+
+        &:hover {
+          background-color: inherit;
+        }
+      }
+    }
+  }
+}

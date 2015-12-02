@@ -1,0 +1,7 @@
+*.log
+.htaccess
+.idea
+.sass-cache
+node_modules
+bower_components
+httpdocs/css

@@ -1,0 +1,29 @@
+// Colours
+//
+
+$darker-gray:         #212121;      // Headings, Table headings, Form labels
+$dark-gray:           #666666;      // Paragraph text, Favourite icon (not selected), Table text
+$gray:                #cccccc;      // Default gray
+$light-gray:          #dddddd;      // Borders
+$lighter-gray:        #eeeeee;      // Row bg (content)
+
+$eastern-blue:        #009ba3;      // Advertise now btn
+$rock-blue:           #98b2d4;      // Steps table number
+$blue:                #0c4da2;      // H3, Rental price text, Links, Form input borders and placeholder text on focus state,
+$light-blue:          #cedbec;      // Row bg (footer)
+$lighter-blue:        #dde6f1;      // Row bg (footer)
+
+$darker-red:          #d53042;      // CTA img label overlay
+$red:                 #ed1c24;      // Panel nav link icons
+
+$green:               #00b233;      // Property img label overlay
+$light-green:         #cae9e5;      // Calendar wk start day
+
+$white:               #ffffff;      // Property img label overlay
+
+// Colour themes
+$brand-primary:       $blue;
+$brand-secondary:     $light-blue;
+$brand-tertiary:      $lighter-blue;
+$brand-accent:        $red;
+

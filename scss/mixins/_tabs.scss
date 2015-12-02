@@ -1,0 +1,154 @@
+// Tabs
+//
+@mixin tabs-variant(
+  // Required parameters
+  //
+  // Background tab colour for in-active tabs
+  $tab-bg,
+  // Background tab colour for hover (in-active) tabs
+  $tab-hover-bg,
+  // Background tab colour for active tabs
+  $tab-active-bg,
+  // Background content area colour
+  $tab-content-bg,
+
+  // Optional parameters
+  //
+  // Colours
+  // =======
+  // Default text colour for tabs
+  $tab-color:                         $nav-tabs-color,
+  // Default hover text colour for hovered tabs
+  $tab-hover-color:                   $nav-tabs-hover-color,
+  // Default hover text colour for active tabs
+  $tab-active-hover-color:            $nav-tabs-active-hover-color,
+  // Default border colour for tabs and content
+  $tab-border-color:                  $nav-tabs-border-color,
+  // Default border colour for active tab
+  $tab-active-border-color:           $tab-border-color,
+
+  // Structural
+  // ==========
+  // If non-zero then tabs are suspended above the content
+  // The active tab is taller and appears joined to the tab content area.
+  $tab-suspend-height:                $nav-tabs-suspend-height,
+  // Default gutter space between tabs
+  $tab-gutter:                        $nav-tabs-gutter,
+  // Default border size for all borders
+  $tab-border-size:                   $nav-tabs-border-size,
+  // Default border size for the tab content area
+  $tab-content-border-size:           $nav-tabs-content-border-size
+) {
+
+  &.nav-tabs {
+
+    > li {
+      margin-right: $tab-gutter;
+
+      // Shared styling
+      > a {
+        @each $color in $tab-bg {
+          background: $color;
+        }
+        color: $tab-color;
+
+        &:hover,
+        &:focus {
+          @each $color in $tab-hover-bg {
+            background: $color;
+          }
+          color: $tab-hover-color;
+
+          .svg-map-icon {
+            fill: $tab-hover-color;
+          }
+        }
+
+        .svg-map-icon {
+          fill: $tab-color;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.active > a {
+
+        &,
+        &:hover,
+        &:focus {
+          @each $color in $tab-active-bg {
+            background-color: $color;
+          }
+          color: $tab-active-hover-color;
+        }
+      }
+
+      // Deal with suspended tabs
+      @if ($tab-suspend-height > 0) {
+        $tab-border-bottom-size: $tab-border-size + $tab-suspend-height;
+
+        > a {
+          margin-bottom: $tab-suspend-height;
+        }
+
+        &.active > a {
+          border-bottom: $tab-border-bottom-size solid transparent;
+          margin-bottom: 0;   // Removes bottom margin makes active tab butt against tab pane
+        }
+
+      } @else {
+        > a {
+          margin-bottom: 0;
+        }
+      }
+
+      // Deal with borders
+      @if ($tab-border-size != 0px) {
+        > a {
+          border-top: $tab-border-size solid $tab-border-color;
+
+          // Only add bottom border when suspended
+          @if ($tab-suspend-height > 0 or $tab-content-border-size == 0px) {
+            border-bottom: $tab-border-size solid $tab-border-color;
+          }
+
+          border-left: $tab-border-size solid $tab-border-color;
+
+          // Only add right border when there's a gutter
+          @if ($tab-gutter != 0px) {
+            border-right: $tab-border-size solid $tab-border-color;
+          }
+        }
+
+        @if ($tab-border-color != $tab-active-border-color) {
+          &.active > a {
+            border-top: $tab-border-size solid $tab-active-border-color;
+            border-left: $tab-border-size solid $tab-active-border-color;
+
+            // Only add right border when there's a gutter
+            @if ($tab-gutter != 0px) {
+              border-right: $tab-border-size solid $tab-active-border-color;
+            }
+          }
+        }
+
+        @if ($tab-gutter == 0px) {
+          &:last-child a {
+            border-right: $tab-border-size solid $tab-border-color;
+          }
+        }
+      }
+    }
+  }
+
+  &.tab-content {
+    @if ($tab-content-border-size) {
+      border: $tab-content-border-size solid $tab-border-color;
+    }
+    @each $color in $tab-content-bg {
+      background-color: $color;
+    }
+  }
+}

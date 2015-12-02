@@ -1,0 +1,27 @@
+
+
+
+// At present, the following has to be a direct copy of app.scss due to the way gulp-sass-glob works
+@import "../bower_components/susy/sass/susy";
+@import "../bower_components/breakpoint-sass/stylesheets/breakpoint";
+
+//$breakpoint-no-queries: true;
+//$breakpoint-no-query-fallbacks: false;
+// changes from the values above as those are legacy settings in the latest version of breakpoint-sass.
+@include breakpoint-set('no queries', true);
+@include breakpoint-set('no query fallbacks', false);
+
+
+@fa-font-path   "../fonts/";
+@import "vendor/font-awesome";
+
+// Load critical variables first, followed by all the others
+@import "variables/core/*";
+@import "variables/**/*";
+
+// To demonstrate layout and responsiveness for prototyping only.
+//@import "prototype/*";
+@import "mixins/**/*";
+@import "base/**/*";
+//@import "helpers/**/*";
+
