@@ -6,7 +6,7 @@
     </div>
     <div class="content">
         <ul class="gallery">
-            <li class="gallery-item"></li>
+            <li class="gallery-item"><a href="/matchtech-strategy">Matchtech Front End Observations/strategy</a></li>
             <li class="gallery-item"></li>
             <li class="gallery-item"></li>
             <li class="gallery-item"></li>
