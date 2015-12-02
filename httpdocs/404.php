@@ -37,7 +37,7 @@
 
 <div class="container">
 
-   <p>Error!</p>
+   <p>404 Error!</p>
 
 </div>
 <!-- /container -->
