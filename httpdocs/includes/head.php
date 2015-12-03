@@ -13,23 +13,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="msapplication-tap-highlight" content="no" />
 
-    <!-- build:cssreset -->
     <link rel="stylesheet" href="css/reset.css">
-    <!-- endbuild -->
 
     <!--[if gt IE 8]><!-->
-    <!-- build:cssapp -->
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/console.css">
-    <!-- endbuild -->
+    <!--    <link rel="stylesheet" href="css/console.css">-->
     <!--<![endif]-->
 
-    <!-- build:cssnoquery -->
     <!--[if IE 8]>
     <link rel="stylesheet" href="css/no-query.css">
-    <link rel="stylesheet" href="css/console-no-query.css">
+    <!-- <link rel="stylesheet" href="css/console-no-query.css"> -->
     <!--<![endif]-->
-    <!-- endbuild -->
+
 </head>
 
 <body>

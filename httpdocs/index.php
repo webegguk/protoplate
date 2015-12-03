@@ -1,38 +1,32 @@
 <?php
-function curPageURL()
-{
+
+// function to get the current url in a reliable way
+function curPageURL(){
     $pageURL = 'http';
     if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
     $pageURL .= "://";
     if ($_SERVER["SERVER_PORT"] != "80") {
-        $pageURL .=
-            $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-    }
-    else {
+        $pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+    }else{
         $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
     }
     return $pageURL;
 }
-#keeps users from requesting any file they want
+
+// process url to get route section and setup template locations
 $url = curPageURL();
-$pagelocation = 'pages/';
-
+$pages = 'pages/';
 $values = parse_url($url);
-
 $path = explode('.',$values['path']);
 $path = ltrim($path[0],"/");
 
-$safe_pages = array("matchtech-strategy", "home", "");
-
-
-if(in_array($path, $safe_pages)) {
-    if($path == "" || $path == "home"){
-        include($pagelocation."index.php");
-    }else{
-        include($pagelocation.$path.".php");
-    }
-} else {
-    include("404.php");
+// test for existence of template that correlates with route and deal with request
+if(file_exists($pages.$path.".php")) {
+    include($pages.$path.".php");
+}elseif($path == "" || $path == "home"){
+    include($pages."home.php");
+}else{
+    include($pages."404.php");
 }
 
 ?>

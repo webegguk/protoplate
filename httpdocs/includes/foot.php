@@ -1,6 +1,9 @@
 
 <?php if ($componentGallery) { ?>
-    <!--<script src="script.js"></script>-->
+    <!-- page specific script etc for the gallery component -->
+<?php } ?>
+<?php if ($componentOffcanvas) { ?>
+    <!-- page specific script etc for the offcanvas component -->
 <?php } ?>
 </body>
 </html>
